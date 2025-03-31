@@ -4,20 +4,32 @@ import {StyleSheet, View, Text, Button} from 'react-native';
 import {StackScreenTypeProp} from '../types';
 
 //create a type of Prop for HomeScreen.
-type HomeScreenNavigationProp = StackNavigationProp<StackScreenTypeProp>;
+type HomeScreenNavigationprop = StackNavigationProp<
+  StackScreenTypeProp,
+  'Home'
+>;
 
 const HomeScreen: React.FC = () => {
-  const navigation = useNavigation<HomeScreenNavigationProp>();
+  //useNavigation is use to navigate form one screen to another.
+  const navigation = useNavigation<HomeScreenNavigationprop>();
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Home Screen</Text>
+      <Text style={styles.header}> Home Screen </Text>
       <View style={styles.btnContainer}>
         <Button
-          title="Go to Profile"
-          onPress={() => navigation.navigate('Profile')}
+          title="Aman Section"
+          onPress={() =>
+            navigation.navigate('Profile', {userId: 'Aman', age: 22})
+          }
         />
         <Button
-          title="Go to About"
+          title="Isha Section"
+          onPress={() =>
+            navigation.navigate('Profile', {userId: 'Isha', age: 24})
+          }
+        />
+        <Button
+          title="About Section"
           onPress={() => navigation.navigate('About')}
         />
       </View>
@@ -30,7 +42,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'darkgrey',
     flex: 1,
     alignItems: 'center',
-    paddingTop: 30,
+    paddingTop: 10,
+    
   },
   header: {
     fontSize: 30,
@@ -38,7 +51,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     // flex:1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     marginBottom: 10,
   },

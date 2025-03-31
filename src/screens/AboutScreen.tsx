@@ -14,7 +14,8 @@ const AboutScreen: React.FC = () => {
   return (
     <View>
       <Text>About Screen</Text>
-      <Button title="Go to Home" onPress={() => navigation.goBack()} />
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+      <Button title="shubham section" onPress={() => navigation.navigate("Profile",{userId:"Shubham choudhary",age:50})} />
     </View>
   );
 };
