@@ -1,8 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import {StackScreenTypeProp} from '../types';
-import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 
 //create a type of Prop for HomeScreen.
 type HomeScreenNavigationprop = StackNavigationProp<
@@ -10,17 +16,41 @@ type HomeScreenNavigationprop = StackNavigationProp<
   'Home'
 >;
 
-const HomeScreen: React.FC = () => {
+const subject = [
+  {
+    id: 1,
+    name: 'FlatLst item',
+    screen: 'FlatList',
+  },
+  {
+    id: 2,
+    name: 'SectionList item',
+    screen: 'SectionList',
+  },
+];
+type Props = {
+  navigation: HomeScreenNavigationprop;
+};
 
+const HomeScreen: React.FC<Props> = ({navigation}) => {
   //UseNavigation is used to navigate to another screen.
-  const navigation = useNavigation<HomeScreenNavigationprop>();
+  // const navigation = useNavigation<HomeScreenNavigationprop>();
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}> Home Screen </Text>
-      <Button
-        title="FlatList Example"
-        onPress={() => navigation.navigate('FlatList')}
+      <FlatList
+        data={subject}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            style={styles.btnConatiner}
+            onPress={
+              () =>
+                navigation.navigate(item.screen as keyof StackScreenTypeProp) //this is use to pass the screen name from object
+            }>
+            <Text style={styles.btnText}>{item.name}</Text>
+          </TouchableOpacity>
+        )}
       />
     </View>
   );
@@ -28,19 +58,23 @@ const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'darkgrey',
-    alignItems: 'center',
     paddingTop: 10,
   },
   header: {
     fontSize: 30,
     fontWeight: 'bold',
   },
-  btnContainer: {
-    // flex:1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginBottom: 10,
+  btnConatiner: {
+    margin: 10,
+    paddingHorizontal: 15,
+    backgroundColor:"lightyellow",
+    paddingVertical: 15,
+    borderWidth: 0.5,
+    borderRadius: 10,
+  },
+  btnText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 

@@ -3,11 +3,8 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {StackScreenTypeProp} from '../types';
 
-type FlatListNavigationProp = StackNavigationProp<
-  StackScreenTypeProp,
-  'FlatList'
->;
-const FlatLiseDemo: React.FC = () => {
+
+const FlatListDemo: React.FC = () => {
   //Sample Data || Data From Api, if using.
   const Flat_Data = Array.from({length: 40}, (_, index) => ({
     id: `${index + 1}`,
@@ -67,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FlatLiseDemo;
+export default FlatListDemo;
