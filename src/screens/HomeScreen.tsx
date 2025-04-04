@@ -27,6 +27,11 @@ const subject = [
     name: 'SectionList item',
     screen: 'SectionList',
   },
+  {
+    id: 3,
+    name: 'Touchable Demo',
+    screen: 'TouchableScreen',
+  },
 ];
 type Props = {
   navigation: HomeScreenNavigationprop;

@@ -14,6 +14,10 @@ const Section_Data = [
     title: 'Shorts',
     data: ['Mini', 'Half', 'Long'],
   },
+  {
+    title: 'Shirts',
+    data: ['Half', 'Full', 'Cotton','PartyWear'],
+  },
 ];
 const SectionListDemo: React.FC = () => {
   const handleRenderItem = ({item}: {item: String}) => (
@@ -43,6 +47,7 @@ const SectionListDemo: React.FC = () => {
             <Text style={styles.menuText}>{title}</Text>
           </View>
         )}
+        keyExtractor={(item,index)=> item + index}
         sections={Section_Data}
         renderItem={handleRenderItem}
       />
@@ -61,9 +66,12 @@ const styles = StyleSheet.create({
   },
   menuHeader: {
     marginVertical: 10,
+    
   },
   menuText: {
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight:"bold",
+    paddingVertical:5
   },
 });
 
