@@ -37,6 +37,11 @@ const subject = [
     name: 'Model Demo',
     screen: 'ModelScreen',
   },
+  {
+    id:5,
+    name:"Pull to refresh Demo",
+    screen:"PullToRefresh",
+  },
 ];
 type Props = {
   navigation: HomeScreenNavigationprop;
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
   btnConatiner: {
     margin: 10,
     paddingHorizontal: 15,
-    backgroundColor:"lightyellow",
+    backgroundColor:"#808873",
     paddingVertical: 15,
     borderWidth: 0.5,
     borderRadius: 10,

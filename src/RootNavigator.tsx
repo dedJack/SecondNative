@@ -5,6 +5,7 @@ import FlatListDemo from './screens/FlatListDemo';
 import SectionListDemo from './screens/SectionListDemo';
 import TouchableWithoutFeedbackDemo from './screens/TouchableWithoutFeedbackDemo';
 import ModelDemo from './screens/ModelDemo';
+import PullToRefreshDemo from './screens/PullToRefreshDemo';
 
 //Create prop type for every screen, Here i have created a prop type, But later i have move it to the another TypeScript file, as it is used by every screen.
 {
@@ -30,6 +31,7 @@ const RootNavigator: React.FC = () => {
         component={TouchableWithoutFeedbackDemo}
       />
       <Stack.Screen name="ModelScreen" component={ModelDemo} />
+      <Stack.Screen name="PullToRefresh" component={PullToRefreshDemo} />
     </Stack.Navigator>
   );
 };

@@ -4,4 +4,5 @@ export type StackScreenTypeProp = {
     "SectionList":undefined;
     "TouchableScreen":undefined;
     "ModelScreen" :undefined;
+    "PullToRefresh":undefined;
 }
