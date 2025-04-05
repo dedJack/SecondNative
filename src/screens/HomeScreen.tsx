@@ -42,6 +42,16 @@ const subject = [
     name:"Pull to refresh Demo",
     screen:"PullToRefresh",
   },
+  {
+    id:6,
+    name:"Axios Screen",
+    screen:"AxiosDemo",
+  },
+  {
+    id:7,
+    name:"Fetch Screen",
+    screen:"FetchDemo",
+  },
 ];
 type Props = {
   navigation: HomeScreenNavigationprop;

@@ -5,4 +5,6 @@ export type StackScreenTypeProp = {
     "TouchableScreen":undefined;
     "ModelScreen" :undefined;
     "PullToRefresh":undefined;
+    "AxiosDemo":undefined;
+    "FetchDemo":undefined;
 }
