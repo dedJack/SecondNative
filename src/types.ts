@@ -3,4 +3,5 @@ export type StackScreenTypeProp = {
     "FlatList" :undefined;
     "SectionList":undefined;
     "TouchableScreen":undefined;
+    "ModelScreen" :undefined;
 }
