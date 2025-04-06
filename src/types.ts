@@ -8,4 +8,12 @@ export type StackScreenTypeProp = {
     "AxiosDemo":undefined;
     "FetchDemo":undefined;
     "ThemeScreen":undefined;
+    "FadeDemoScreen":undefined;
+    "AnimationScreen":undefined;
+}
+
+export type AnimationScreenTypeProp ={
+    "AnimationScreen":undefined;
+    "FadeDemoScreen":undefined;
+    
 }
