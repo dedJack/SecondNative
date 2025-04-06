@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
-import type {PropsWithChildren} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import React from 'react';
 import RootNavigator from './src/RootNavigator';
 import {NavigationContainer} from '@react-navigation/native';
+import ThemeProvider from './src/context/ThemeProvider';
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 

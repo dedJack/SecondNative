@@ -7,4 +7,5 @@ export type StackScreenTypeProp = {
     "PullToRefresh":undefined;
     "AxiosDemo":undefined;
     "FetchDemo":undefined;
+    "ThemeScreen":undefined;
 }

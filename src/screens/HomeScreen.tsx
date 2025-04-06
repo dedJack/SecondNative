@@ -52,6 +52,11 @@ const subject = [
     name:"Fetch Screen",
     screen:"FetchDemo",
   },
+  {
+    id:8,
+    name:"Theme Screen",
+    screen:"ThemeScreen",
+  },
 ];
 type Props = {
   navigation: HomeScreenNavigationprop;

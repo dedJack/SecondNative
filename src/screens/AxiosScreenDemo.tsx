@@ -5,9 +5,11 @@ import {
   ActivityIndicator,
   FlatList,
   StyleSheet,
+  Switch,
   Text,
   View,
 } from 'react-native';
+import {useTheme} from '../context/ThemeProvider';
 
 interface Post {
   id: string;
@@ -34,13 +36,18 @@ api.interceptors.response.use(response => {
 */
 
 const AxiosScreenDemo: React.FC = () => {
+  const {theme, toggleTheme} = useTheme();
+  const isDarkMode = theme === 'light';
+
   const [data, setData] = useState<Post[]>();
   const [loading, setLoading] = useState(false);
 
   const fetchPost = async () => {
     try {
       setLoading(true);
-      const response = await api.get<Post[]>('/64KB-min.json');/*<Post[]> "it will describe the type of output i am getting"*/
+      const response = await api.get<Post[]>(
+        '/64KB-min.json',
+      ); /*<Post[]> "it will describe the type of output i am getting"*/
       // console.log(response);
       if (response) {
         setData(response.data);
@@ -57,21 +64,56 @@ const AxiosScreenDemo: React.FC = () => {
 
   const handleRenderItem = ({item}: {item: Post}) => (
     <View style={styles.renderContainer}>
-      <Text style={styles.renderText}>{item.name}</Text>
-      <Text style={styles.renderText}>{item.language}</Text>
+      <Text
+        style={[
+          styles.renderText,
+          {
+            color: !isDarkMode ? 'black' : 'white',
+          },
+        ]}>
+        {item.name}
+      </Text>
+      <Text
+        style={[
+          styles.renderText,
+          {
+            color: !isDarkMode ? 'black' : 'white',
+          },
+        ]}>
+        {item.language}
+      </Text>
     </View>
   );
 
   useEffect(() => {
-    setTimeout(()=>{
-    fetchPost();},1500)
+    fetchPost();
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Fetching Data by using AXIOS</Text>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: !isDarkMode ? 'lightgrey' : 'black',
+        },
+      ]}>
+      <Text
+        style={[
+          styles.header,
+          {
+            color: !isDarkMode ? 'black' : 'white',
+          },
+        ]}>
+        Fetching Data by using AXIOS
+      </Text>
+      <Switch
+        value={isDarkMode}
+        onValueChange={toggleTheme}
+        thumbColor={isDarkMode ? 'grey' : 'blue'}
+        trackColor={{false: 'grey', true: 'blue'}}
+      />
       {loading ? (
-        <ActivityIndicator size="large" color="black" />
+        <ActivityIndicator size="large" color="blue" />
       ) : (
         <FlatList
           keyExtractor={item => item.id.toString()}
@@ -99,6 +141,9 @@ const styles = StyleSheet.create({
   renderText: {
     fontSize: 15,
     paddingVertical: 5,
+  },
+  listText: {
+    color: 'black',
   },
   footer: {
     paddingVertical: 20,
