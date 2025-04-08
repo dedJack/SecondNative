@@ -14,8 +14,10 @@ const FadeDemo: React.FC = () => {
   //useRef is used to keep values and not change during re-renders.
   const fadeAnimation = useRef(new Animated.Value(0)).current;
   const transAnimation = useRef(new Animated.Value(0)).current;
-  const scaleAnimationX = useRef(new Animated.Value(0)).current;
   const scaleAnimation = useRef(new Animated.Value(0)).current;
+  const rotateAnimation = useRef(new Animated.Value(0)).current;
+  const springAnimation = useRef(new Animated.Value(0)).current;
+  const bounceAnimation = useRef(new Animated.Value(0)).current;
 
   const handleFadeIn = () => {
     //Animated.timing() is use d for smooth tranistions in animation
@@ -43,43 +45,74 @@ const FadeDemo: React.FC = () => {
   };
   const handleTranslateReverse = () => {
     Animated.sequence([
-    Animated.timing(transAnimation, {
-      toValue: 0,
-      duration: 1000,
-      easing: Easing.bezier(0.42, 0, 0.58, 1),
-      useNativeDriver: true,
-    }),
-    Animated.timing(transAnimation, {
-      toValue: 75,
-      duration: 1000,
-      easing: Easing.bezier(0.42, 0, 0.58, 1),
-      useNativeDriver: true,
-    }),
-    Animated.timing(transAnimation,{
-      toValue: -50,
-      duration:500,
-      useNativeDriver:true
-    })
-  ]).start();
+      Animated.timing(transAnimation, {
+        toValue: 0,
+        duration: 1000,
+        easing: Easing.bezier(0.42, 0, 0.58, 1),
+        useNativeDriver: true,
+      }),
+      Animated.timing(transAnimation, {
+        toValue: 75,
+        duration: 1000,
+        easing: Easing.bezier(0.42, 0, 0.58, 1),
+        useNativeDriver: true,
+      }),
+      Animated.timing(transAnimation, {
+        toValue: -50,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+    ]).start();
   };
 
   const handleScale = () => {
     Animated.sequence([
       Animated.timing(scaleAnimation, {
         toValue: 1.5,
-        duration:1000,
-        useNativeDriver:true
+        duration: 1000,
+        useNativeDriver: true,
       }),
       Animated.timing(scaleAnimation, {
-        toValue: .25,
-        duration:1000,
-        useNativeDriver:true
+        toValue: 0.25,
+        duration: 1000,
+        useNativeDriver: true,
       }),
       Animated.timing(scaleAnimation, {
         toValue: 1,
-        duration:1000,
-        useNativeDriver:true
+        duration: 1000,
+        useNativeDriver: true,
       }),
+    ]).start();
+  };
+
+  const handleRotate = () => {
+    Animated.timing(rotateAnimation, {
+      toValue: 2, //it denotes the number of round.
+      duration: 1000,
+      useNativeDriver: true,
+    }).start(() => rotateAnimation.setValue(0));
+  };
+  const spin = rotateAnimation.interpolate({
+    //Interpolate chnage the numeric value to string as rotate properties use string like '0deg'
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+
+  const handleSpring = () => {
+    Animated.spring(springAnimation, {
+      toValue: 60,
+      friction: 1,
+      tension: 40,
+      useNativeDriver: true,
+    }).start(() => {
+      springAnimation.setValue(0);
+    });
+  };
+
+  const handleBounce = () => {
+    Animated.sequence([
+      Animated.timing(bounceAnimation, {toValue: -30, useNativeDriver: true}),
+      Animated.timing(bounceAnimation, {toValue: 0, useNativeDriver: true}),
     ]).start();
   };
 
@@ -98,7 +131,6 @@ const FadeDemo: React.FC = () => {
           <Text style={styles.btnText}>Fade OUT</Text>
         </TouchableOpacity>
       </View>
-
       {/* Translate Demo */}
       <Text style={styles.header}>Translate Demo</Text>
       <Animated.View
@@ -121,7 +153,6 @@ const FadeDemo: React.FC = () => {
           <Text style={styles.btnText}>Translate reverse</Text>
         </TouchableOpacity>
       </View>
-
       {/*Scale demo*/}
       <Text style={styles.header}>Scale Demo</Text>
       <Animated.View
@@ -138,6 +169,48 @@ const FadeDemo: React.FC = () => {
       <View style={styles.btnContainer}>
         <TouchableOpacity style={styles.btn} onPress={handleScale}>
           <Text style={styles.btnText}>Scale</Text>
+        </TouchableOpacity>
+      </View>
+      {/* Rotate Demo */}
+      <Text style={styles.header}>Rotate Demo</Text>
+      <Animated.View
+        style={[
+          styles.box,
+          {
+            transform: [{rotate: spin}],
+          },
+        ]}></Animated.View>
+      <View style={styles.btnContainer}>
+        <TouchableOpacity style={styles.btn} onPress={handleRotate}>
+          <Text style={styles.btnText}>Rotate</Text>
+        </TouchableOpacity>
+      </View>
+      {/* Spring Demo */}
+      <Text style={styles.header}>Spring Demo</Text>
+      <Animated.View
+        style={[
+          styles.box,
+          {
+            transform: [{translateX: springAnimation}],
+          },
+        ]}></Animated.View>
+      <View style={styles.btnContainer}>
+        <TouchableOpacity style={styles.btn} onPress={handleSpring}>
+          <Text style={styles.btnText}>Spring</Text>
+        </TouchableOpacity>
+      </View>
+      {/* Bounce Demo */}
+      <Text style={styles.header}>Bounce Demo</Text>
+      <Animated.View
+        style={[
+          styles.box,
+          {
+            transform: [{translateY: bounceAnimation}],
+          },
+        ]}></Animated.View>
+      <View style={styles.btnContainer}>
+        <TouchableOpacity style={styles.btn} onPress={handleBounce}>
+          <Text style={styles.btnText}>Bounce</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
