@@ -41,13 +41,26 @@ const FadeDemo: React.FC = () => {
       useNativeDriver: true,
     }).start();
   };
-  const handleTranslate1 = () => {
+  const handleTranslateReverse = () => {
+    Animated.sequence([
     Animated.timing(transAnimation, {
       toValue: 0,
       duration: 1000,
       easing: Easing.bezier(0.42, 0, 0.58, 1),
       useNativeDriver: true,
-    }).start();
+    }),
+    Animated.timing(transAnimation, {
+      toValue: 75,
+      duration: 1000,
+      easing: Easing.bezier(0.42, 0, 0.58, 1),
+      useNativeDriver: true,
+    }),
+    Animated.timing(transAnimation,{
+      toValue: -50,
+      duration:500,
+      useNativeDriver:true
+    })
+  ]).start();
   };
 
   const handleScale = () => {
@@ -104,7 +117,7 @@ const FadeDemo: React.FC = () => {
         <TouchableOpacity style={styles.btn} onPress={handleTranslate}>
           <Text style={styles.btnText}>Translate</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn} onPress={handleTranslate1}>
+        <TouchableOpacity style={styles.btn} onPress={handleTranslateReverse}>
           <Text style={styles.btnText}>Translate reverse</Text>
         </TouchableOpacity>
       </View>
@@ -141,7 +154,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   box: {
-    marginLeft: 10,
+    marginHorizontal: 10,
     borderRadius: 8,
     borderWidth: 1,
     height: 200,
