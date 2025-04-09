@@ -9,11 +9,10 @@ export type StackScreenTypeProp = {
     "FetchDemo":undefined;
     "ThemeScreen":undefined;
     "FadeDemoScreen":undefined;
-    "AnimationScreen":undefined;
+    "AnimationScreen":undefined;    
+    "InterpolateScreen":undefined;
+    "CombineAnimationScreen":undefined;
+    "GestureAnimationScreen":undefined;
 }
 
-export type AnimationScreenTypeProp ={
-    "AnimationScreen":undefined;
-    "FadeDemoScreen":undefined;
-    
-}
+

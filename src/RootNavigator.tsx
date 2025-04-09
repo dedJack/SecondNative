@@ -11,6 +11,9 @@ import DataFetchingDemo from './screens/DataFetchingDemo';
 import ThemeScreen from './screens/ThemeScreen';
 import AnimationDemo from './Animations/AnimationDemo';
 import FadeDemo from './Animations/FadeDemo';
+import InterpolationDemo from './Animations/InterpolationDemo';
+import CombineAnimation from './Animations/CombineAnimation';
+import Gestureanimationdemo from './Animations/Gestureanimationdemo';
 
 //Create prop type for every screen, Here i have created a prop type, But later i have move it to the another TypeScript file, as it is used by every screen.
 {
@@ -42,6 +45,9 @@ const RootNavigator: React.FC = () => {
       <Stack.Screen name="ThemeScreen" component={ThemeScreen} />
       <Stack.Screen name="AnimationScreen" component={AnimationDemo} />
       <Stack.Screen name="FadeDemoScreen" component={FadeDemo} />
+      <Stack.Screen name="InterpolateScreen" component={InterpolationDemo} />
+      <Stack.Screen name="CombineAnimationScreen" component={CombineAnimation} />
+      <Stack.Screen name="GestureAnimationScreen" component={Gestureanimationdemo} />
     </Stack.Navigator>
   );
 };

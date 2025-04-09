@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {AnimationScreenTypeProp} from '../types';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackScreenTypeProp} from '../types';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 const topic = [
   {
@@ -9,11 +9,26 @@ const topic = [
     name: 'FadeDemo',
     screen: 'FadeDemoScreen',
   },
+  {
+    id: 2,
+    name: 'InterpolationDemo',
+    screen: 'InterpolateScreen',
+  },
+  {
+    id: 3,
+    name: 'CombineAnimation',
+    screen: 'CombineAnimationScreen',
+  },
+  {
+    id: 4,
+    name: 'GestureAnimation',
+    screen: 'GestureAnimationScreen',
+  },
 ];
 
 //Animation screen prop to navigate
 type AnimationScreenNavigationProp = StackNavigationProp<
-  AnimationScreenTypeProp,
+  StackScreenTypeProp,
   'AnimationScreen'
 >;
 
@@ -24,8 +39,7 @@ type props = {
 
 //main function.
 const AnimationDemo: React.FC<props> = ({navigation}) => {
-
-    //handle renderItem
+  //handle renderItem
   const handleRenderItem = ({
     item,
   }: {
@@ -34,12 +48,11 @@ const AnimationDemo: React.FC<props> = ({navigation}) => {
     <TouchableOpacity
       style={styles.listContainer}
       onPress={() =>
-        navigation.navigate(item.screen as keyof AnimationScreenTypeProp)
+        navigation.navigate(item.screen as keyof StackScreenTypeProp)
       }>
       <Text style={styles.listText}>{item.name}</Text>
     </TouchableOpacity>
   );
-
 
   return (
     <View style={styles.container}>
