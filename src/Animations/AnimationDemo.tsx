@@ -34,6 +34,11 @@ const topic = [
     name: 'Reanimated Types',
     screen: 'ReanimatedTypeScreen',
   },
+  {
+    id: 7,
+    name: 'Gesture Handler',
+    screen: 'GestureHandlerScreen',
+  },
 ];
 
 //Animation screen prop to navigate
