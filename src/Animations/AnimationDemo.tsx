@@ -29,6 +29,11 @@ const topic = [
     name: 'Reanimated Basics',
     screen: 'BasicReanimatedScreen',
   },
+  {
+    id: 6,
+    name: 'Reanimated Types',
+    screen: 'ReanimatedTypeScreen',
+  },
 ];
 
 //Animation screen prop to navigate
