@@ -24,6 +24,11 @@ const topic = [
     name: 'GestureAnimation',
     screen: 'GestureAnimationScreen',
   },
+  {
+    id: 5,
+    name: 'Reanimated Basics',
+    screen: 'BasicReanimatedScreen',
+  },
 ];
 
 //Animation screen prop to navigate

@@ -13,6 +13,7 @@ export type StackScreenTypeProp = {
     "InterpolateScreen":undefined;
     "CombineAnimationScreen":undefined;
     "GestureAnimationScreen":undefined;
+    "BasicReanimatedScreen":undefined;
 }
 
 

@@ -8,7 +8,6 @@ import {
   ScrollView,
   Easing,
 } from 'react-native';
-import AnimationDemo from './AnimationDemo';
 
 const FadeDemo: React.FC = () => {
   //useRef is used to keep values and not change during re-renders.

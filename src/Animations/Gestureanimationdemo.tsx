@@ -35,7 +35,7 @@ const Gestureanimationdemo: React.FC = () => {
       <Animated.View
         {...panResponder.panHandlers}
         style={[styles.box, pan.getLayout()]}>
-        <Text style={styles.boxText}>Drag me!</Text>
+        <Text style={styles.boxText}>Drag me</Text>
       </Animated.View>
     </View>
   );
