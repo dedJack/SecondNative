@@ -39,6 +39,11 @@ const topic = [
     name: 'Gesture Handler',
     screen: 'GestureHandlerScreen',
   },
+  {
+    id: 8,
+    name: 'Gesture PlayGround',
+    screen: 'GesturePlayGroundScreen',
+  },
 ];
 
 //Animation screen prop to navigate

@@ -17,6 +17,7 @@ import Gestureanimationdemo from './Animations/Gestureanimationdemo';
 import ReanimatedBasicDemo from './Animations/ReanimatedBasicDemo';
 import ReanimatedTypes from './Animations/ReanimatedTypes';
 import GestureHandlerDemo from './Animations/GestureHandlerDemo';
+import GesturePlayGround from './Animations/GesturePlayGround';
 
 //Create prop type for every screen, Here i have created a prop type, But later i have move it to the another TypeScript file, as it is used by every screen.
 {
@@ -54,6 +55,7 @@ const RootNavigator: React.FC = () => {
       <Stack.Screen name="BasicReanimatedScreen" component={ReanimatedBasicDemo} />
       <Stack.Screen name="ReanimatedTypeScreen" component={ReanimatedTypes} />
       <Stack.Screen name="GestureHandlerScreen" component={GestureHandlerDemo} />
+      <Stack.Screen name="GesturePlayGroundScreen" component={GesturePlayGround} />
     </Stack.Navigator>
   );
 };

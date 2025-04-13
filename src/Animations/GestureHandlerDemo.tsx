@@ -13,7 +13,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  withTiming,
 } from 'react-native-reanimated';
 
 type contextType = {
@@ -74,7 +73,6 @@ const GestureHandlerDemo: React.FC = () => {
     );
     return {
       backgroundColor: backgroundColor,
-
       transform: [
         {translateX: translateX.value},
         {translateY: translateY.value},
