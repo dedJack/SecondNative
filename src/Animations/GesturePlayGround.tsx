@@ -1,91 +1,94 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   Gesture,
   GestureDetector,
   GestureHandlerRootView,
-  PanGestureHandler,
 } from 'react-native-gesture-handler';
 import Animated, {
-  interpolateColor,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  withTiming,
 } from 'react-native-reanimated';
 
-const GesturePlayGround: React.FC = () => {
-  const colors = ['red', 'green', 'yellow', 'purple', 'darkblue'];
+type ItemType = {
+  id: string;
+  title: string;
+};
 
-  const bgColor = useSharedValue(0);
-  const scale = useSharedValue(1);
-  const rotate = useSharedValue(0);
+//child component
+const DraggableComponent = ({
+  item,
+  onDelete,
+}: {
+  item: ItemType;
+  onDelete: (id: string) => void;
+}) => {
   const translateX = useSharedValue(0);
-  const savedTranslateX = useSharedValue(0);
-  const translateY = useSharedValue(0);
-  const savedTranslateY = useSharedValue(0);
+  const startX = useSharedValue(0);
 
-  const singleTap = Gesture.Tap().onStart(() => {
-    bgColor.value = withTiming(Math.ceil((bgColor.value + 1) % colors.length));
-  });
-
-  const doubleTap = Gesture.Tap()
-    .numberOfTaps(2)
-    .onStart(() => {
-      scale.value = withSpring(Math.min(scale.value + 0.3, 2));
-    });
-
-  const longPress = Gesture.LongPress()
-    .minDuration(250)
-    .onStart(() => {
-      rotate.value = withSpring(360);
-    })
-    .onEnd(() => {
-      rotate.value = withSpring(0);
-    });
-
+  //Gesture that perform animations.
   const panGesture = Gesture.Pan()
+    .onStart(() => {
+      startX.value = translateX.value;
+    })
     .onUpdate(e => {
-      translateX.value = e.translationX;
-      translateY.value = e.translationY;
+      translateX.value = startX.value + e.translationX;
     })
     .onEnd(() => {
-      translateX.value = withTiming(0);
-      translateY.value = withTiming(0);
+      if (translateX.value < -60) {
+        translateX.value = withSpring(-120);
+      } else {
+        translateX.value = withSpring(0);
+      }
     });
 
-  const AnimatedStyles = useAnimatedStyle(() => {
-    const interpolatedColors = interpolateColor(
-      bgColor.value,
-      [0, 1, 2, 3, 4, 5],
-      colors,
-    );
-    return {
-      backgroundColor: interpolatedColors,
-      transform: [
-        {scale: scale.value},
-        {rotate: `${rotate.value}deg`},
-        {translateX: translateX.value},
-        {translateY: translateY.value},
-      ],
-    };
-  });
+  //changing the style as per animations.
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{translateX: translateX.value}],
+  }));
 
   return (
+    <GestureDetector gesture={Gesture.Simultaneous(panGesture)}>
+      <Animated.View style={[styles.box, animatedStyles]}>
+        <Text style={styles.boxText}>{item.title}, slide to delete --{">"}</Text>
+        <View>
+          <TouchableOpacity
+            style={styles.dltBtn}
+            onPress={() => onDelete(item.id)}>
+            <Text style={styles.boxText}>Delete</Text>
+          </TouchableOpacity>
+        </View>
+      </Animated.View>
+    </GestureDetector>
+  );
+};
+
+//parent component.
+const GesturePlayGround: React.FC = () => {
+  const [list, setList] = useState<ItemType[]>(
+    Array.from({length: 6}, (_, index) => ({
+      id: (index + 1).toString(),
+      title: `item ${index + 1}`,
+    })),
+  );
+
+  //deleting the element from list
+  const handleDelete = (id: string) => {
+    setList(prev => prev.filter(item => item.id !== id));
+  };
+  return (
     <GestureHandlerRootView style={styles.container}>
-      <View style={styles.container}>
-        <Text style={styles.header}>Gesture PlayGround</Text>
-        <GestureDetector
-          gesture={Gesture.Simultaneous(
-            singleTap,
-            doubleTap,
-            longPress,
-            panGesture,
-          )}>
-          <Animated.View style={[styles.box, AnimatedStyles]}>
-            <Text style={styles.boxText}>Pinch or Tap</Text>
-          </Animated.View>
-        </GestureDetector>
+      <View>
+        <Text style={styles.header}>Gesture PlayGRound</Text>
+      </View>
+      <View>
+        <FlatList
+          data={list}
+          renderItem={({item}) => (
+            <DraggableComponent item={item} onDelete={handleDelete} />
+          )}
+        />
       </View>
     </GestureHandlerRootView>
   );
@@ -94,24 +97,28 @@ const GesturePlayGround: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     margin: 20,
-    alignItems: 'center',
   },
   header: {
     fontSize: 25,
     fontWeight: 'bold',
   },
   box: {
-    height: 150,
-    width: 150,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     backgroundColor: '#b58df1',
-    borderRadius: 20,
+    borderRadius: 10,
     marginBottom: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   boxText: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: 'bold',
+  },
+  dltBtn: {
+    left: 120,
+    paddingHorizontal: 20,
+    borderRadius: 10,
   },
 });
 
