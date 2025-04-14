@@ -24,7 +24,6 @@ const TouchableWithoutFeedbackDemo: React.FC = () => {
           styles.btn,
           {backgroundColor: pressed ? 'white' : 'lightgrey'},
         ]}>
-        {' '}
         <Text style={styles.btnText}>Pressable</Text>
       </Pressable>
 

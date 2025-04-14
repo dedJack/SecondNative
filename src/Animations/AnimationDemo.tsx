@@ -44,6 +44,11 @@ const topic = [
     name: 'Gesture PlayGround',
     screen: 'GesturePlayGroundScreen',
   },
+  {
+    id: 9,
+    name: 'Reanimation FormValidation Screen',
+    screen: 'ReanimationFormValidationScreen',
+  },
 ];
 
 //Animation screen prop to navigate

@@ -17,6 +17,7 @@ export type StackScreenTypeProp = {
     "ReanimatedTypeScreen":undefined;
     "GestureHandlerScreen":undefined;
     "GesturePlayGroundScreen":undefined;
+    "ReanimationFormValidationScreen":undefined
 }
 
 
