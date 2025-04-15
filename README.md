@@ -9,8 +9,7 @@ This repository contains all the React Native features, animations, and function
 ### 🧹 Reanimated (v2+)
 - `useSharedValue`, `useAnimatedStyle`, `withTiming`, `withSpring`, `withDecay`
 - `interpolate`, `interpolateColor`
-<<<<<<< HEAD
-=======
+
 - `runOnJS` to bridge between animation and JS logic
 >>>>>>> a28f931 (Update README in secondNative)
 - Animated transitions and responsive animations
@@ -71,7 +70,6 @@ The main goal of this repo is to master animation and interaction patterns in Re
 
 ---
 
-=======
 - Practiced clean structure inside the `SecondNative` repo
 - All features, gestures, and animations are organized and separated into files/modules
 - Each feature implemented with real code, not tutorials only
@@ -98,5 +96,3 @@ This is a growing project. As I explore more React Native libraries, animation p
 The main goal of this repo is to master animation and interaction patterns in React Native by building small, focused features and utilities — preparing for real-world mobile app development.
 
 ---
-
->>>>>>> a28f931 (Update README in secondNative)
