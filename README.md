@@ -1,97 +1,68 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 secondNative – React Native Learning Repo
 
-# Getting Started
+This repository contains all the React Native features, animations, and functionalities I’ve learned and practiced so far. It is a hands-on learning space where I implemented everything from gesture handling to animations using Reanimated.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🧠 What I’ve Learned So Far
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### 🧹 Reanimated (v2+)
+- `useSharedValue`, `useAnimatedStyle`, `withTiming`, `withSpring`, `withDecay`
+- `interpolate`, `interpolateColor`
+- Animated transitions and responsive animations
+- Drag-based animation handling with shared values
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 🖐️ Gesture Handling
+- `react-native-gesture-handler`
+  - `PanGestureHandler` for drag interactions
+  - `TapGestureHandler`, `LongPressGestureHandler`
+- Used `GestureDetector` and `Gesture` API from Reanimated v3+
+- Independent gestures per FlatList item
+- Drag-to-delete interaction with visual feedback
 
-```sh
-# Using npm
-npm start
+### ⬆️ Interactions & UI Effects
+- Pull to refresh using FlatList’s `onRefresh` and `refreshing` props
+- Custom gesture zones (like deleting by dragging to a specific area)
+- Smooth animation control with `interpolate`
 
-# OR using Yarn
-yarn start
-```
+### 🔗 API Integration
+- **Data fetching using:**
+  - `fetch` API (native)
+  - `axios` (third-party)
+- State management and dynamic rendering of data from APIs
 
-## Step 2: Build and run your app
+### 📆 State & Component Management
+- React Hooks: `useState`, `useEffect`
+- Context API for managing global state
+- Modular file organization and reusable components
+- Conditional rendering and component-based layouts
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### 🧱 Architecture & Structure
+- Practiced clean structure inside the `secondNative` repo
+- All features, gestures, and animations are organized and separated into files/modules
+- Each feature implemented with real code, not tutorials only
 
-### Android
 
-```sh
-# Using npm
-npm run android
+---
 
-# OR using Yarn
-yarn android
-```
+## ⚖️ Work in Progress
+This is a growing project. As I explore more React Native libraries, animation patterns, and API integrations, I will continue updating this repository.
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## 📌 Tech Stack
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+- React Native
+- React Native Reanimated
+- React Native Gesture Handler
+- Axios
+- React Context API
 
-```sh
-bundle install
-```
+---
 
-Then, and every time you update your native dependencies, run:
+## 🏁 Goal
 
-```sh
-bundle exec pod install
-```
+The main goal of this repo is to master animation and interaction patterns in React Native by building small, focused features and utilities — preparing for real-world mobile app development.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+---
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
